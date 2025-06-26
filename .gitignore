@@ -5,7 +5,10 @@
 .gradle
 **/build/
 !src/**/build/
+.idea/*
 
+# Google Services (e.g. APIs or Firebase)
+app/google-services.json
 # Ignore Gradle GUI config
 gradle-app.setting
 
