@@ -24,8 +24,7 @@ import com.example.cognitiveassesmenttest.R
  * Activity for the drawing part.
  */
 class DrawingActivity : AppCompatActivity() {
-    private lateinit var sentenceInput: EditText
-    private lateinit var checkSentenceButton: Button
+
     private lateinit var checkDrawingButton: Button
     private lateinit var pentagon1: ImageView
     private lateinit var pentagon2: ImageView
@@ -44,39 +43,19 @@ class DrawingActivity : AppCompatActivity() {
             insets
         }
 
-        sentenceInput = findViewById(R.id.sentenceInput)
-        checkSentenceButton = findViewById(R.id.checkSentenceButton)
         checkDrawingButton = findViewById(R.id.checkDrawingButton)
         pentagon1 = findViewById(R.id.pentagon1)
         pentagon2 = findViewById(R.id.pentagon2)
 
-        checkSentenceButton.isEnabled = false
         pentagon1.isVisible = false
         pentagon2.isVisible = false
         checkDrawingButton.isVisible = false
 
         var finalScore = intent.getIntExtra("score", 0)
 
-        sentenceInput.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                checkSentenceButton.isEnabled = s?.isNotEmpty() == true
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
-        checkSentenceButton.setOnClickListener {
-            val sentence = sentenceInput.text.toString().trim()
-
-            if (sentence.equals("Wroclaw", ignoreCase = true) || sentence.equals("Wrocław", ignoreCase = true)) {
-                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show()
-                finalScore += 1
-            }
-            pentagon1.isVisible = true
-            pentagon2.isVisible = true
-            checkDrawingButton.isVisible = true
-        }
+        pentagon1.isVisible = true
+        pentagon2.isVisible = true
+        checkDrawingButton.isVisible = true
 
 
         checkDrawingButton.setOnClickListener {

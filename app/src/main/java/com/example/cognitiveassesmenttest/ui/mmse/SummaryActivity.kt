@@ -75,7 +75,7 @@ class SummaryActivity : AppCompatActivity() {
 
         val finalScore = intent.getIntExtra("score", 0)
 
-        resultText.text = "Your score: $finalScore/18 points"
+        resultText.text = "Your score: $finalScore/17 points"
         setInfoText(finalScore)
         saveScoreToFirebase(finalScore)
         fetchScoresFromFirebase()
@@ -94,8 +94,8 @@ class SummaryActivity : AppCompatActivity() {
      */
     private fun setInfoText(finalScore: Int) {
         diagnosis = when {
-            finalScore >= 16 -> "no cognitive impairment"
-            finalScore in 11..15 -> "mild dementia"
+            finalScore >= 15 -> "no cognitive impairment"
+            finalScore in 11..14 -> "mild dementia"
             finalScore in 6..10 -> "moderate dementia"
             else -> "severe dementia"
         }
